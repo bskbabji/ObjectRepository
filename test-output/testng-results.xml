@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2022-01-25T11:33:14 CST" name="Default suite" finished-at="2022-01-25T11:33:21 CST" duration-ms="7189">
+    <groups>
+    </groups>
+    <test started-at="2022-01-25T11:33:14 CST" name="Default test" finished-at="2022-01-25T11:33:21 CST" duration-ms="7189">
+      <class name="TestLogin">
+        <test-method is-config="true" signature="LaunchBrowser()[pri:0, instance:TestLogin@38c6f217]" started-at="2022-01-25T11:33:14 CST" name="LaunchBrowser" finished-at="2022-01-25T11:33:17 CST" duration-ms="2690" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- LaunchBrowser -->
+        <test-method signature="TestMultipleWindows()[pri:1, instance:TestLogin@38c6f217]" started-at="2022-01-25T11:33:17 CST" name="TestMultipleWindows" finished-at="2022-01-25T11:33:21 CST" duration-ms="4290" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TestMultipleWindows -->
+        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:TestLogin@38c6f217]" started-at="2022-01-25T11:33:21 CST" name="closeBrowser" finished-at="2022-01-25T11:33:21 CST" duration-ms="182" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeBrowser -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:TestLogin@38c6f217]" started-at="2022-01-25T11:33:21 CST" name="tearDown" finished-at="2022-01-25T11:33:22 CST" duration-ms="361" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- TestLogin -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
