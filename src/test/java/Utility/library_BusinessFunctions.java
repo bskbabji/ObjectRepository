@@ -42,10 +42,10 @@ public class library_BusinessFunctions /* extends Constants */ {
 	
 	public static void designHtmlReport() {
 		
-		htmlReport = new ExtentHtmlReporter(System.getProperty("user.dir")+"//HTML_report.html");
+		htmlReport = new ExtentHtmlReporter("HTML_report.html");
 		extent = new ExtentReports();
 		extent.attachReporter(htmlReport);
-		htmlReport.config().setAutoCreateRelativePathMedia(true);
+		
 		
 		
 	}
@@ -189,7 +189,7 @@ public class library_BusinessFunctions /* extends Constants */ {
 
 	@AfterSuite
 	public void tearDown() {
-		//extent.flush();
+		extent.flush();
 	}
 	public static void GetScreenShot(String fileName) {
 

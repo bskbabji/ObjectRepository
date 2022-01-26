@@ -19,10 +19,14 @@ public class Orep {
 	
 	public static final String LastNameTableRow = Constants.xpath+"&"+"//table[@id='example']/tbody/tr[${i}]/td[3]";
 	public static final String FirstNameTableRow = Constants.xpath+"&"+"//table[@id='example']/tbody/tr[${i}]/td[2]";
-			
-			
-	
+		
 	public static final String NextPage = Constants.xpath+"&"+"//a[@id='example_next']";
 	
+	public static final String MaleRadioButton = Constants.ID+"&"+"malerb";
+	public static final String FemaleRadioButton = Constants.ID+"&"+"femalerb";
+	
+	public static final String EnglishCheckBox = Constants.ID+"&"+"englishchbx";
+	public static final String HindiCheckBox = Constants.ID+"&"+"hindichbx";
+	public static final String ChineseCheckBox = Constants.ID+"&"+"chinesechbx";
 
 }

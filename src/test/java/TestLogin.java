@@ -10,13 +10,18 @@ import javax.imageio.ImageIO;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
+
+import com.aventstack.extentreports.MediaEntityBuilder;
+import com.aventstack.extentreports.Status;
+
 import Utility.Orep;
 import Utility.library_BusinessFunctions;
 
 public class TestLogin extends library_BusinessFunctions {
-
+/*
 	@Test(priority = 1)
 	public void TestMultipleWindows() throws InterruptedException, IOException {
 		
@@ -25,7 +30,9 @@ public class TestLogin extends library_BusinessFunctions {
 		driver.navigate().to(objProperties.getProperty("HomePageURL"));
 		
 		FindElement(Orep.StartTrialButton).click();
+		
 		test.info("clicked trial button");
+		test.log(Status.INFO, "xxxxxxx");
 		Set<String> windowHandleSet = driver.getWindowHandles();
 		GetScreenShot("firstScreenshot");
 
@@ -40,9 +47,12 @@ public class TestLogin extends library_BusinessFunctions {
 			}
 		}
 		
+		test.fail("fail details", MediaEntityBuilder.createScreenCaptureFromPath(".//Screenshots//firstScreenshot.png").build());
+		//test.addScreenCaptureFromPath(".//Screenshots//firstScreenshot.png");
+		
 
 	}
-
+*/
 /*	@Test(priority = 2)
 	public void TestSliderOne() {
 		
@@ -153,4 +163,34 @@ public class TestLogin extends library_BusinessFunctions {
 	}
 	*/
 
+	@Test
+	public void TestBasicHTMLControls() throws InterruptedException {
+		
+		driver.navigate().to(objProperties.getProperty("BasicHTMLControlsURL"));
+		
+		JavascriptExecutor js = (JavascriptExecutor)driver;
+		js.executeScript("window.scrollBy(0,400)");
+		Thread.sleep(500);
+		
+		WebElement MaleElement = FindElement(Orep.MaleRadioButton);
+		if(MaleElement.isSelected()==true)
+		{
+			Thread.sleep(300);
+			FindElement(Orep.FemaleRadioButton).click();
+			
+			Thread.sleep(300);
+		}
+			
+		FindElement(Orep.EnglishCheckBox).click();
+		FindElement(Orep.HindiCheckBox).click();
+		FindElement(Orep.ChineseCheckBox).click();
+		
+		Thread.sleep(300);
+		
+		FindElement(Orep.ChineseCheckBox).click();
+		
+		Thread.sleep(300);
+			
+		
+	}
 }
