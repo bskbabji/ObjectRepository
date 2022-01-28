@@ -276,7 +276,7 @@ public class TestLogin extends library_BusinessFunctions {
 		Thread.sleep(1000);
 		r.keyPress(KeyEvent.VK_ENTER);
 		r.keyRelease(KeyEvent.VK_ENTER);
-		Thread.sleep(5000);
+		Thread.sleep(10000);
 		
 	}
 	

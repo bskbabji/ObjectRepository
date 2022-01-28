@@ -82,7 +82,7 @@ public class library_BusinessFunctions /* extends Constants */ {
 			dc.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR,UnexpectedAlertBehaviour.IGNORE);
 			
 			ChromeOptions c = new ChromeOptions();
-			c.setHeadless(true);
+			//c.setHeadless(true);
 			
 			Map<String,Object> chromePrefs = new HashMap<String,Object>();
 			chromePrefs.put("profile.default_content_settings.popups", 0);
@@ -101,6 +101,7 @@ public class library_BusinessFunctions /* extends Constants */ {
 			driver = new EdgeDriver();
 			break;
 		
+			
 		default:
 
 		}
