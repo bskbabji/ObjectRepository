@@ -2,16 +2,23 @@ import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Set;
 import javax.imageio.ImageIO;
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.aventstack.extentreports.MediaEntityBuilder;
@@ -102,6 +109,7 @@ public class TestLogin extends library_BusinessFunctions {
 		Thread.sleep(2000);
 
 		alert.accept();
+		
 
 	}
 
@@ -163,7 +171,7 @@ public class TestLogin extends library_BusinessFunctions {
 	}
 	*/
 
-	@Test
+/*	@Test
 	public void TestBasicHTMLControls() throws InterruptedException {
 		
 		driver.navigate().to(objProperties.getProperty("BasicHTMLControlsURL"));
@@ -191,6 +199,129 @@ public class TestLogin extends library_BusinessFunctions {
 		
 		Thread.sleep(300);
 			
+		
+	}*/
+/*	@Test
+	public void TestDropDownControls() throws InterruptedException {
+		
+		driver.navigate().to(objProperties.getProperty("DropDownControlsURL"));
+		
+		WebElement SingleDropDown = FindElement(Orep.CourseDropDown);
+		
+		Select SingleDropDownOptions = new Select(SingleDropDown);
+		
+		List<WebElement> AvailableOptions = SingleDropDownOptions.getOptions();
+		
+		System.out.println("Single Choice Drop Down options are:");
+		
+		for( WebElement ele : AvailableOptions)
+		{
+			System.out.println(ele.getText());
+		}
+		
+		SingleDropDownOptions.selectByIndex(1);
+		
+		Thread.sleep(800);
+		
+		SingleDropDownOptions.selectByValue("net");
+		
+		Thread.sleep(500);
+		
+		SingleDropDownOptions.selectByVisibleText("Javascript");
+		Thread.sleep(500);
+		
+		Select MultiDropDown = new Select(FindElement(Orep.IDE_MultiDropDown));
+		
+		List<WebElement>  MultiDropDownOptions = MultiDropDown.getOptions();
+		
+		System.out.println("Multi Choice Drop Down options are:");
+		
+		for( WebElement ele : MultiDropDownOptions)
+		{
+			System.out.println(ele.getText());
+		}
+		
+		MultiDropDown.selectByIndex(1);
+		Thread.sleep(500);
+		
+		MultiDropDown.selectByValue("nb");
+		Thread.sleep(500);
+		MultiDropDown.selectByVisibleText("Visual Studio");
+		Thread.sleep(500);
+		
+		System.out.println("first selected option" + MultiDropDown.getFirstSelectedOption().getText());
+			
+	}*/
+	
+	@Test
+	public void FileUploadUsingRobot() throws InterruptedException, AWTException {
+		
+		driver.navigate().to(objProperties.getProperty("FileUploadURL"));
+		Thread.sleep(1000);
+		WebElement ele = FindElement(Orep.FileUploadBrowseButton);
+		
+		Actions act = new Actions(driver);
+		act.click(ele).build().perform();
+		
+		StringSelection FileSelected = new StringSelection("C:\\Users\\swapn\\OneDrive\\Desktop\\Selenium SDET\\Selenium_basics.txt");
+		Toolkit tk =  Toolkit.getDefaultToolkit();
+		Clipboard cp = tk.getSystemClipboard();
+		cp.setContents(FileSelected, null);
+		
+		Robot r = new Robot();
+		r.keyPress(KeyEvent.VK_CONTROL);
+		r.keyPress(KeyEvent.VK_V);
+		r.keyRelease(KeyEvent.VK_CONTROL);
+		r.keyRelease(KeyEvent.VK_V);
+		Thread.sleep(1000);
+		r.keyPress(KeyEvent.VK_ENTER);
+		r.keyRelease(KeyEvent.VK_ENTER);
+		Thread.sleep(5000);
+		
+	}
+	
+	@Test
+	public void FileUploadUsingSendKeys() throws InterruptedException {
+		
+		driver.navigate().to(objProperties.getProperty("FileUploadURL"));
+		Thread.sleep(2000);
+		FindElement(Orep.FileUploadBrowseButton).sendKeys("C:\\Users\\swapn\\OneDrive\\Desktop\\Selenium SDET\\Selenium_basics.txt");
+		Thread.sleep(5000);
+		
+	}
+	
+	@Test
+	public void FileDownload() throws InterruptedException {
+		
+		driver.navigate().to(objProperties.getProperty("FileDownloadURL"));
+		
+		JavascriptExecutor js = (JavascriptExecutor)driver;
+		js.executeScript("window.scrollBy(0,400)");
+		Thread.sleep(1500);
+		
+		WebElement ele = FindElement(Orep.FileDownload500kb);
+		Actions act = new Actions(driver);
+		act.click(ele).build().perform();
+		System.out.println("download 500 kb button clicked");
+		Thread.sleep(100000);
+		File objFile = new File(System.getProperty("user.dir"));
+		File[] AllFiles = objFile.listFiles();
+		Boolean fileFound = false;
+		File obj_File = null;
+		for(File IndividualFile:AllFiles){
+			if(IndividualFile.isDirectory()== true) continue;
+			String FileName = IndividualFile.getName();
+			System.out.println("FileName:"+FileName);
+			if(FileName.contains("file-sample")){
+				fileFound=true;
+				obj_File = new File(FileName);
+				break;
+			}
+		}
+		//Assert.assertTrue(fileFound, "Downloaded File Not Found");
+		//obj_File.deleteOnExit();
+	
+		
 		
 	}
 }

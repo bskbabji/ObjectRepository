@@ -1,5 +1,7 @@
 package Utility;
 
+
+
 public class Orep {
 	
 	//public static final String EmailTextBox = Constants.ID+"&"+"email";
@@ -28,5 +30,16 @@ public class Orep {
 	public static final String EnglishCheckBox = Constants.ID+"&"+"englishchbx";
 	public static final String HindiCheckBox = Constants.ID+"&"+"hindichbx";
 	public static final String ChineseCheckBox = Constants.ID+"&"+"chinesechbx";
+	
+	public static final String CourseDropDown = Constants.ID+"&"+"course";
+	public static final String IDE_MultiDropDown = Constants.ID+"&"+"ide";
+	
+	//public static final String FileUploadBrowseButton = Constants.xpath+"&"+"//input[@id='input-4']/preceding-sibling::span";
+	public static final String FileUploadBrowseButton = Constants.xpath+"&"+"//input[@id='input-4']";
+	
+	public static final String DocumentsBrowseButton = Constants.xpath+"&"+"//h3[text()='Documents']/following-sibling::a";
+	//public static final String FileTypeToDownload = Constants.xpath+"&"+"//td[text()='DOC, DOCX']/following-sibling::td[2]/a";
+	
+	public static final String FileDownload500kb = Constants.xpath+"&"+"//a[@download='file-sample_500kB.doc']";
 
 }

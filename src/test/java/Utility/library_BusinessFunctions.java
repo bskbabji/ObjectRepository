@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
@@ -17,14 +19,17 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 
-import com.aventstack.extentreports.ExtentReporter;
+
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
@@ -73,19 +78,29 @@ public class library_BusinessFunctions /* extends Constants */ {
 			driver = new InternetExplorerDriver();
 			break;
 		case "chrome":
-			// DesiredCapabilities dc = new DesiredCapabilities();
-			// dc.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR,
-			// UnexpectedAlertBehaviour.IGNORE);
-			// ChromeOptions c = new ChromeOptions();
-			// c.merge(dc);
+			DesiredCapabilities dc = new DesiredCapabilities();
+			dc.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR,UnexpectedAlertBehaviour.IGNORE);
+			
+			ChromeOptions c = new ChromeOptions();
+			c.setHeadless(true);
+			
+			Map<String,Object> chromePrefs = new HashMap<String,Object>();
+			chromePrefs.put("profile.default_content_settings.popups", 0);
+			//chromePrefs.put("disable_popup_blocking", true);
+			chromePrefs.put("download.prompt_for_download", false);
+			chromePrefs.put("download.default_directory", System.getProperty("user.dir"));
+			c.setExperimentalOption("prefs", chromePrefs);
+			
+			c.merge(dc);
 
 			WebDriverManager.chromedriver().setup();
-			driver = new ChromeDriver();
+			driver = new ChromeDriver(c);
 			break;
 		case "Edge":
 			WebDriverManager.edgedriver().setup();
 			driver = new EdgeDriver();
 			break;
+		
 		default:
 
 		}
@@ -211,4 +226,13 @@ public class library_BusinessFunctions /* extends Constants */ {
 		}
 
 	}
+	
+	/*@AfterTest
+	public void afterTestListeners(ITestResult result) {
+	System.out.println("inside AfterTest");
+		if(result.getStatus()== ITestResult.SUCCESS)
+			System.out.println("test case success"+ result.getTestName());
+	}*/
+	
+	
 }
