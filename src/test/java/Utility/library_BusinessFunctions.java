@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
@@ -19,7 +20,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
-
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -33,6 +34,7 @@ import org.testng.annotations.BeforeMethod;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+import com.gargoylesoftware.htmlunit.BrowserVersion;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -100,14 +102,18 @@ public class library_BusinessFunctions /* extends Constants */ {
 			WebDriverManager.edgedriver().setup();
 			driver = new EdgeDriver();
 			break;
-		
-			
+		case "Headless":
+			//driver = new HtmlUnitDriver(true);
+			driver = new HtmlUnitDriver(BrowserVersion.BEST_SUPPORTED);
+			((HtmlUnitDriver) driver).setJavascriptEnabled(true);
+			break;
 		default:
+			
 
 		}
 
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.get("https://www.google.com/");
 		
 		
@@ -142,11 +148,11 @@ public class library_BusinessFunctions /* extends Constants */ {
 
 	public static List<WebElement> FindElements(String OrepLocator) {
 		By search = null;
-		System.out.println(OrepLocator);
+		//System.out.println(OrepLocator);
 		String locator = OrepLocator.split("&")[0];
 		String value = OrepLocator.split("&")[1];
-		System.out.println(locator);
-		System.out.println(value);
+		//System.out.println(locator);
+		//System.out.println(value);
 		if (locator.equals("name")) {
 			search = By.name(value);
 		} else if (locator.equals("id")) {

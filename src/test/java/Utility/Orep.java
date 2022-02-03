@@ -41,5 +41,30 @@ public class Orep {
 	//public static final String FileTypeToDownload = Constants.xpath+"&"+"//td[text()='DOC, DOCX']/following-sibling::td[2]/a";
 	
 	public static final String FileDownload500kb = Constants.xpath+"&"+"//a[@download='file-sample_500kB.doc']";
+	public static final String DownloadZipFile = Constants.xpath+"&"+"//a[text()='chromedriver_linux64.zip']";
+	
+	public static final String DataDrivenFirstName = Constants.xpath+"&"+"//input[@placeholder='First Name']";
+	public static final String DataDrivenLastName = Constants.xpath+"&"+"//input[@placeholder='Last Name']";
+	public static final String DataDrivenAddress = Constants.xpath+"&"+"//textarea[@ng-model='Adress']";
+	public static final String DataDrivenEmail = Constants.xpath+"&"+"//input[@ng-model='EmailAdress']";
+	public static final String DataDrivenPhone = Constants.xpath+"&"+"//input[@ng-model='Phone']";
+	public static final String DataDrivenGenderMale = Constants.xpath+"&"+"//input[@value='Male']";
+	public static final String DataDrivenGenderFemale = Constants.xpath+"&"+"//input[@value='FeMale']";
+	public static final String DataDrivenHobbiesCricket = Constants.ID+"&"+"checkbox1";
+	public static final String DataDrivenHobbiesMovies = Constants.ID+"&"+"checkbox2";
+	public static final String DataDrivenHobbiesHockey = Constants.ID+"&"+"checkbox3";
+	public static final String DataDrivenLanguages = Constants.ID+"&"+"msdd";
+	public static final String DataDrivenAllLanguages = Constants.xpath+"&"+"//div[@id='msdd']/following-sibling::div/ul/li/a";
+	public static final String LanguageClose = Constants.xpath+"&"+"//span[@class='ui-icon ui-icon-close']";
+	public static final String DataDrivenSkillsField = Constants.xpath+"&"+"//label[contains(text(),'Skills')]";
+	public static final String DataDrivenSkillsDropDown = Constants.ID+"&"+"Skills";
+	public static final String DataDrivenSelectCountryDropDown = Constants.ID+"&"+"country";
+	public static final String DataDrivenYear = Constants.ID+"&"+"yearbox";
+	public static final String DataDrivenMonth = Constants.xpath+"&"+"//select[@placeholder='Month']";
+	public static final String DataDrivenDay = Constants.ID+"&"+"daybox";
+	public static final String DataDrivenPassword = Constants.ID+"&"+"firstpassword";
+	public static final String DataDrivenConfirmPassword = Constants.ID+"&"+"secondpassword";
+	
+	
 
 }
